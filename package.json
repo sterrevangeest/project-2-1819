@@ -19,6 +19,9 @@
   },
   "homepage": "https://github.com/sterrevangeest/musiXmatch-api#readme",
   "dependencies": {
-    "express": "^4.16.4"
+    "dotenv": "^7.0.0",
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
+    "node-fetch": "^2.3.0"
   }
 }

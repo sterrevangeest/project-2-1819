@@ -1,0 +1,31 @@
+<!-- views/pages/index.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <% include ../partials/head %>
+</head>
+<body class="container">
+
+<header> <% include ../partials/header %></header>
+<nav>
+  <ul>
+    <li>All</li>
+    <li>Temperature</li>
+  </ul>
+</nav>
+<ul>
+<% data.forEach(function(item){ %>
+<li>
+
+  <a href="room/<%= item.url%>">
+  <%= item.roomName%></a></li>
+
+<% }); %>
+
+</ul>
+<footer><% include ../partials/footer %></footer>
+
+</body>
+
+</html>
