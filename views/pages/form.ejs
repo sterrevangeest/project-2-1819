@@ -1,0 +1,45 @@
+<!-- views/pages/index.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <% include ../partials/head %>
+</head>
+
+<body class="container">
+  <h1>Mirabeau Rooms</h1>
+  <form class="hoi" action="/postform" method="post">
+    <fieldset>
+
+      <legend for="">Form</legend>
+      <label for="temperature"> Temperature</label>
+      <div class="">
+        <option label="Hot"></option>
+        <option label="Normal"></option>
+        <option label="Cold"></option>
+      </div>
+      <input type="range" id="temperature" name="temperature" min="0" max="30000">
+
+      <label for="mic_level"> Noise </label>
+      <div class="">
+        <option label="Noisy room"></option>
+        <option label="Normal"></option>
+        <option label="Silent room"></option>
+      </div>
+      <input type="range" id="mic_level" name="mic_level" min="0" max="30000">
+
+      <label for="ambient_light"> Light</label>
+      <div class="">
+        <option label="Dark room"></option>
+        <option label="Normal"></option>
+        <option label="Light room"></option>
+      </div>
+
+      <input type="range" id="ambient_light" name="ambient_light" min="0" max="30000">
+    </fieldset>
+    <button type="submit">Bekijk</button>
+  </form>
+</body>
+
+</html>

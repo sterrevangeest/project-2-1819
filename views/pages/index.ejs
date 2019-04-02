@@ -2,29 +2,67 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <% include ../partials/head %>
+  <% include ../partials/head %>
 </head>
+
 <body class="container">
 
-<header> <% include ../partials/header %></header>
-<nav>
-  <ul>
-    <li>All</li>
-    <li>Temperature</li>
-  </ul>
-</nav>
-<ul>
+  <header> <% include ../partials/header %></header>
+
+  <% data.forEach(function(item){ %>
+  <%if (item.measurements.occupancy === true) { %>
+  <article class="<%= item.measurements.occupancy%>">
+    <h2><%= item.roomName%></h2>
+    <p><%= item.measurements[filterId]%> <%= filterId%></p>
+    <ul>
+      <li>Bap_level: <%= item.measurements.bapLevel%></li>
+      <li>Temperature: <%= item.measurements.temperature%></li>
+      <li>Mic_level: <%= item.measurements.mic_level%></li>
+      <li>Ambient_light: <%= item.measurements.ambient_light%></li>
+      <li>Humidity: <%= item.measurements.humidity%></li>
+      <li>C02: <%= item.measurements.co2%></li>
+      <li>VOC: <%= item.measurements.voc%></li>
+    </ul>
+    <button type="button" name="button">More info</button>
+  </article>
+  <% } %>
+  <% }); %>
+
+  <% data.forEach(function(item){ %>
+  <%if (item.measurements.occupancy === false) { %>
+  <article class="<%= item.measurements.occupancy%>">
+    <h2><%= item.roomName%></h2>
+    <p><%= item.measurements[filterId]%> <%= filterId%></p>
+
+    <button type="button" name="button">More info</button>
+  </article>
+  <% } %>
+  <% }); %>
+
+
+  <!-- <ul>
 <% data.forEach(function(item){ %>
-<li>
-
-  <a href="room/<%= item.url%>">
-  <%= item.roomName%></a></li>
-
+  <%if (item.measurements.occupancy === true) { %>
+    <li class= "<%= item.measurements.occupancy%>">
+      <a href="room/<%= item.url%>"><%= item.roomName%></a>
+      <%= item.measurements[filterId]%> <%= filterId%>
+    </li>
+<% } %>
 <% }); %>
-
 </ul>
-<footer><% include ../partials/footer %></footer>
+<ul>
+
+<% data.forEach(function(item){ %>
+  <%if (item.measurements.occupancy === false) { %>
+    <li class= "<%= item.measurements.occupancy%>">
+      <a href="room/<%= item.url%>">
+      <%= item.roomName%></a>  <%= item.measurements[filterId]%> <%= filterId%> </li>
+<% } %>
+<% }); %>
+</ul> -->
+  <footer><% include ../partials/footer %></footer>
 
 </body>
 

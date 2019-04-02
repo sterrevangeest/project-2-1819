@@ -1,6 +1,13 @@
 <!-- views/partials/header.ejs -->
 <header>
   <div id="status"></div>
-<h1>mirabeau rooms</h1>
-
+<h1>Mirabeau Rooms</h1>
 </header>
+
+<nav>
+  <ul>
+  <%  Object.keys(measurements).forEach(function (item) { %>
+    <li><a href="<%= item%>"><%= item%></a> </li>
+   <% }) %>
+  </ul>
+</nav>
