@@ -1,14 +1,86 @@
 html {
-  margin: 1em;
+  /* margin: 1em; */
 }
 
 body {
   font-family: Brando Sans;
-  max-width: 40em;
-  margin: 0 auto;
+  /* max-width: 40em;
+  margin: 0 auto; */
   color: #24282a;
+  margin: 0;
 }
 
+body .bestroom {
+  padding: 5em;
+  text-align: center;
+  color: white;
+}
+
+.bestroom ul {
+  /* padding: 0; */
+  /* display: inline; */
+}
+
+.bestroom ul li {
+  /* padding: 0;
+  display: inline; */
+}
+
+.bestroom nav {
+  text-align: right;
+  position: relative;
+  top: -50px;
+  right: -50px;
+  color: white;
+}
+
+.bestroom a {
+  color: white;
+  padding: 0.5em 1em;
+  border-radius: 3px;
+  border: 1px solid white;
+  text-decoration: none;
+}
+
+ol {
+  margin: 2em auto;
+  padding: -1em;
+  max-width: 30em;
+  font-size: 1.2em;
+  font-weight: 800;
+}
+
+ul {
+  padding-left: 0.9em;
+}
+
+ol > li {
+  padding: 1em 0;
+  border-bottom: 1px solid lightgrey;
+  width: 90%;
+}
+ul li {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: inline;
+}
+
+.ranking {
+  background-color: gold;
+  display: inline-block;
+  color: black;
+  height: 10%;
+  padding: 0.5em;
+  font-weight: 100;
+  font-size: 0.8em;
+  float: right;
+  border-radius: 1000em;
+}
+
+.twee {
+  float: none;
+}
 form label {
   display: block;
   font-weight: 800;
@@ -33,61 +105,12 @@ form div {
   justify-content: space-between;
 }
 
-/* input[type="range"] {
-  -webkit-appearance: none;
-  display: block;
-  margin-bottom: 3em;
-  background: linear-gradient(90deg, OrangeRed, gold, DeepSkyBlue);
-  width: 100%;
-  border-radius: 2em;
-  margin-top: 1em;
-} */
-nav ul li {
-  display: inline-block;
-}
-
-nav {
-  border-bottom: 2px solid #575757;
-  color: #575757;
-}
-
-nav a {
-  color: grey;
-  text-decoration: none;
-}
-
-ul {
-  padding: 0;
-}
-
-li {
-  list-style-type: none;
-  display: inline;
-}
-
-h2 {
-  margin: 0;
-  display: inline;
-}
-
 p {
   display: inline;
 }
 
-article {
-  background-color: white;
-  color: #24282a;
-  padding: 1em;
-  margin: 1em 0;
-  border-radius: 0.1em;
-}
-
-.true {
-  border-left: 3px solid green;
-}
-
 .false {
-  border-left: 3px solid red;
+  color: grey;
 }
 
 input[type="range"] {
@@ -135,4 +158,12 @@ button {
   border: 2px solid black;
   padding: 1em;
   width: 100%;
+}
+
+.true > li:first-of-type {
+  display: none;
+}
+
+.bestroom {
+  background-color: #56c271;
 }

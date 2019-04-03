@@ -9,11 +9,46 @@
 
 <body class="container">
 
-<h1>hoi</h1>
+<div class="bestroom">
+  <nav>
+    <a href="/form">Change settings</a>
+  </nav>
+  <p>Best Available Room</p>
+  <h1><%= data[0].name%></h1>
+  <!--<p class="ranking twee"><%= data[0].ranking%></p>-->
+  <ul>
+    <li>Temp</li>
+    <li>Dec</li>
+    <li>Light</li>
 
-  <% data.forEach(function(item){ %>  <p><%= item.name %></p>  <% }) %>
+  </ul>
 
+</div>
+  <ol class='true' start="2">
+  <% data.forEach(function(item){ %>
+  <%if (item.measurements.occupancy === true) { %>
+    <li>
+    <ul>
+      <li><%= item.name%></li>
+      <li class="ranking"><%= item.ranking%></li>
+    </ul>
+    </li>
+  <% } %>
+  <% }); %>
+</ol>
 
+<ol>
+<% data.forEach(function(item){ %>
+<%if (item.measurements.occupancy === false) { %>
+  <ul class="<%= item.measurements.occupancy%>">
+
+    <li><%= item.name%></li>
+    <li><%= item.ranking-200%></li>
+    <li>niet beschikbaar</li>
+  </ul>
+<% } %>
+<% }); %>
+</ol>
 
   <footer><% include ../partials/footer %></footer>
 
