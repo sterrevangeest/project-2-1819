@@ -1,45 +1,124 @@
+@media (max-width: 600px) {
+  html {
+    //background: red;
+  }
+  ol li ul div li {
+    display: block;
+  }
+
+  .bestroom ul li {
+    display: block !important;
+    padding: 0.5em !important;
+    margin: 0;
+  }
+
+  .ranking {
+    float: none;
+    margin-top: 1em;
+  }
+
+  form {
+    padding: 1em;
+  }
+
+  .bestroom nav {
+    text-align: center;
+    width: 100%;
+    color: #fff;
+    margin-bottom: 2em;
+  }
+
+  .bestroom {
+    width: 10em;
+  }
+}
+
+@media (min-width: 600px) {
+  ol li ul div {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap-reverse;
+    flex-grow: 3;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+  form {
+    padding: 3em;
+  }
+  .bestroom nav {
+    text-align: right;
+    position: relative;
+    top: -50px;
+    right: -50px;
+    color: #fff;
+  }
+}
+
 html {
   /* margin: 1em; */
 }
 
 body {
-  font-family: Brando Sans;
+  font-family: Brando Sans, Verdana, sans-serif;
   /* max-width: 40em;
   margin: 0 auto; */
   color: #24282a;
   margin: 0;
+  //background-color: #56c271;
+}
+
+.form {
+  background-color: #24282a;
+}
+
+.form h1 {
+  color: white;
+  text-align: center;
+  margin-top: 2em;
+  margin-bottom: 1em;
 }
 
 body .bestroom {
   padding: 5em;
   text-align: center;
   color: white;
+  font-size: 1.2em;
 }
 
 .bestroom ul {
-  /* padding: 0; */
-  /* display: inline; */
+  padding: 0;
+  display: flex;
+  display: inline-block;
+  width: 100%;
+  text-align: center;
 }
 
 .bestroom ul li {
-  /* padding: 0;
-  display: inline; */
+  padding: 1em;
+
+  display: inline;
+  list-style-type: none;
 }
 
-.bestroom nav {
+/* .bestroom nav {
   text-align: right;
   position: relative;
   top: -50px;
   right: -50px;
   color: white;
-}
+} */
 
 .bestroom a {
   color: white;
-  padding: 0.5em 1em;
+  padding: 0.7em 1.5em;
   border-radius: 3px;
   border: 1px solid white;
   text-decoration: none;
+  font-size: 1rem;
 }
 
 ol {
@@ -58,12 +137,22 @@ ol > li {
   padding: 1em 0;
   border-bottom: 1px solid lightgrey;
   width: 90%;
+  color: grey;
 }
-ul li {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-  display: inline;
+
+ol li ul li {
+  font-weight: 400;
+  padding-right: 1em;
+}
+
+ol li ul li span {
+  font-weight: 800;
+}
+
+ol li ul div:first-of-type li:first-of-type {
+  display: block;
+  font-weight: 800;
+  color: #202020;
 }
 
 .ranking {
@@ -71,16 +160,31 @@ ul li {
   display: inline-block;
   color: black;
   height: 10%;
-  padding: 0.5em;
+  padding: 0.5em 1em;
   font-weight: 100;
-  font-size: 0.8em;
-  float: right;
+  font-size: 0.9rem;
+  //float: right;
   border-radius: 1000em;
+  text-align: center;
 }
 
 .twee {
   float: none;
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+  max-width: 5em;
+  margin-bottom: 2em;
 }
+
+form {
+  max-width: 30em;
+  margin: 0 auto;
+  background-color: white;
+  //padding: 3em;
+  border-radius: 0.2em;
+}
+
 form label {
   display: block;
   font-weight: 800;
@@ -109,55 +213,83 @@ p {
   display: inline;
 }
 
-.false {
-  color: grey;
-}
-
 input[type="range"] {
   -webkit-appearance: none;
   display: block;
-  margin-bottom: 3em;
+  margin-bottom: 5em;
   width: 100%;
-  border-radius: 2em;
-  margin-top: 1em;
-  height: 3em;
+  border-radius: 100em;
+  margin-top: 1.5em;
+  height: 1em;
 }
 
 /* Special styling for WebKit/Blink */
 input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
-  /* border: 4px solid #202020; */
-  height: 2.7em;
-  width: 2.7em;
+  border: 4px solid #202020;
+  height: 2em;
+  width: 2em;
   border-radius: 100%;
-  background: #ffffff;
+  background: #202020;
   cursor: pointer;
+  box-shadow: 3px solid black;
   /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
-  /* box-shadow: 1px 1px 1px #000000, 1px 1px 1px #0d0d0d; */
+  -webkit-box-shadow: 0px 0px 0px 10px rgba(86, 194, 113, 0.6);
+
   /* Add cool effects to your sliders! */
 }
 
 #temperature[type="range"] {
-  background: linear-gradient(90deg, OrangeRed, gold, DeepSkyBlue);
+  //background: linear-gradient(90deg, OrangeRed, gold, DeepSkyBlue);
+  background: #56c271;
+  //border: 1px solid black;
 }
 
 #mic_level[type="range"] {
-  background: linear-gradient(90deg, OrangeRed, gold, GreenYellow);
+  //background: linear-gradient(90deg, OrangeRed, gold, GreenYellow);
+  background: #56c271;
+  //border: 1px solid black;
 }
 
 #ambient_light[type="range"] {
-  background: linear-gradient(90deg, #303030, Gainsboro);
+  //background: linear-gradient(90deg, #303030, Gainsboro);
+  background: #56c271;
+  //border: 1px solid black;
 }
 
 button {
-  margin-top: 3em;
-  background-color: white;
-  font-size: 1em;
-  font-family: inherit;
-  background-color: white;
-  border: 2px solid black;
-  padding: 1em;
+  color: #202020;
+  padding: 0.5em 1em;
+  border-radius: 3px;
+  border: 1px solid black;
   width: 100%;
+  font-size: inherit;
+  font-family: inherit;
+  text-decoration: none;
+  width: 60%;
+  display: block;
+  margin: 0 auto;
+  background-color: white;
+  transition: background-color 0.3s;
+  /* transition: color 0.3s; */
+}
+
+button:hover {
+  background-color: #24282a;
+  color: white;
+  cursor: pointer;
+  /* transform: scale(1.1); */
+  transition: all 0.3s;
+  /* transition: color 0.3s; */
+}
+
+a:hover {
+  background-color: white;
+  color: #56c271;
+  cursor: pointer;
+
+  transition: background-color 0.3s;
+  border: 1px solid white;
 }
 
 .true > li:first-of-type {
@@ -166,4 +298,35 @@ button {
 
 .bestroom {
   background-color: #56c271;
+}
+
+ol .false {
+  list-style-type: none;
+}
+
+.false li:first-of-type {
+  color: grey;
+}
+
+.false .ranking {
+  background-color: grey;
+  color: white;
+}
+
+.inuse {
+  color: red;
+  margin-right: 1em;
+  float: right;
+}
+
+.date {
+  font-weight: 100;
+  font-size: 0.9em;
+  margin: -1em;
+  color: #202020;
+  background-color: lightgrey;
+  padding: 0.5em;
+  border-radius: 0.1em;
+  margin-bottom: 2em;
+  /* //border-bottom: 1px solid grey; */
 }

@@ -1,0 +1,17 @@
+@font-face {
+  font-family: "Brando Sans";
+  src: url("../fonts/Brando-Sans-Light.woff") format("woff");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Brando Sans";
+  src: url("../fonts/Brando-Sans-Semi-Bold.woff") format("woff");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Brando Sans";
+  src: url("../fonts/Brando-Sans-Text.woff") format("woff");
+  font-display: swap;
+}

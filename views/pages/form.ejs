@@ -7,24 +7,24 @@
   <% include ../partials/head %>
 </head>
 
-<body class="container">
-  <h1>Mirabeau Rooms</h1>
+<body class="form">
+  <h1>Find your ideal room:</h1>
   <form class="hoi" action="/postform" method="post">
     <fieldset>
 
-      <legend for="">Form</legend>
+      <legend for="">I want a:</legend>
       <label for="temperature"> Temperature</label>
       <div class="">
-        <option label="Hot"></option>
-        <option label="Normal"></option>
-        <option label="Cold"></option>
+        <option label="Hot room"></option>
+        <option label="Normal room"></option>
+        <option label="Cold room"></option>
       </div>
       <input type="range" id="temperature" name="temperature" min="0" max="12">
 
       <label for="mic_level"> Noise </label>
       <div class="">
         <option label="Noisy room"></option>
-        <option label="Normal"></option>
+        <option label="Normal room"></option>
         <option label="Silent room"></option>
       </div>
       <input type="range" id="mic_level" name="mic_level" min="0" max="12">
@@ -32,13 +32,13 @@
       <label for="ambient_light"> Light</label>
       <div class="">
         <option label="Dark room"></option>
-        <option label="Normal"></option>
+        <option label="Normal room"></option>
         <option label="Light room"></option>
       </div>
 
       <input type="range" id="ambient_light" name="ambient_light" min="0" max="12">
     </fieldset>
-    <button type="submit">Bekijk</button>
+    <button type="submit">Find the best room</button>
   </form>
 </body>
 

@@ -9,7 +9,45 @@ var fetch = require("node-fetch");
 var ejs = require("ejs");
 require("dotenv").config();
 app.set("view engine", "ejs");
-app.use(bodyParser());
+
+app.use(bodyParser.json());
+
+app.use(
+  bodyParser.urlencoded({
+    extended: true
+  })
+);
+
+var compression = require("compression");
+app.use(compression());
+
+var minifyHTML = require("express-minify-html");
+app.use(
+  minifyHTML({
+    override: true,
+    exception_url: false,
+    htmlMinifier: {
+      removeComments: true,
+      collapseWhitespace: true,
+      collapseBooleanAttributes: true,
+      removeAttributeQuotes: true,
+      removeEmptyAttributes: true,
+      minifyJS: true
+    }
+  })
+);
+
+app.use((req, res, next) => {
+  res.append("Access-Control-Allow-Origin", ["*"]);
+  res.append("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE");
+  res.append("Access-Control-Allow-Headers", "Content-Type");
+  res.append("Cache-Control", "max-age=" + 365 * 24 * 60 * 60);
+  next();
+});
+
+var minify = require("express-minify");
+app.use(minify());
+
 app.use(express.static("public"));
 
 //ROUTES
@@ -32,10 +70,10 @@ app.post("/postform", function(req, res) {
       var ambient_lightGoal = req.body.ambient_light;
 
       var temperatures = data.map(function(item) {
-        return item.measurements.temperature / 1000;
+        return Math.round(item.measurements.temperature / 100) / 10;
       });
       var mic_levels = data.map(function(item) {
-        return item.measurements.mic_level;
+        return Math.round(item.measurements.mic_level / 100);
       });
       var ambient_light = data.map(function(item) {
         return item.measurements.ambient_light / 1000;
@@ -159,21 +197,57 @@ app.post("/postform", function(req, res) {
       var sumRankingValues = arr.map(function(item, i) {
         var ranking =
           item.temperatureRank + item.mic_levelRank + item.ambientlightRank;
-        arr[i].ranking = ranking;
+
+        var calculatePercentage = Math.round((ranking * 100) / 33);
+        console.log(
+          "Ranking",
+          ranking,
+          "calculatePercentage",
+          calculatePercentage
+        );
+        arr[i].ranking = calculatePercentage;
+
         if (item.measurements.occupancy === false) {
-          arr[i].ranking = ranking + 200;
+          arr[i].ranking = ranking;
         }
         return arr;
       });
 
-      var sortRanking = arr.sort((a, b) => (a.ranking > b.ranking ? 1 : -1));
-      console.log(sortRanking);
+      function timeConverter(UNIX_timestamp) {
+        var a = new Date(UNIX_timestamp * 1000);
+        var months = [
+          "Jan",
+          "Feb",
+          "Mar",
+          "Apr",
+          "May",
+          "Jun",
+          "Jul",
+          "Aug",
+          "Sep",
+          "Oct",
+          "Nov",
+          "Dec"
+        ];
+        var year = a.getFullYear();
+        var month = months[a.getMonth()];
+        var date = a.getDate();
+        var hour = a.getHours();
+        var min = a.getMinutes();
+        var sec = a.getSeconds();
+        var time =
+          date + " " + month + " " + year + " " + hour + ":" + min + ":" + sec;
+        return time;
+      }
+      console.log(timeConverter(1553781803.617139));
+
+      var sortRanking = arr.sort((a, b) => (b.ranking > a.ranking ? 1 : -1));
+
       res.render("pages/nieuweindex", {
-        data: sortRanking
+        data: sortRanking,
+        time: timeConverter(data[1].timestamp)
       });
     });
 });
 
-app.listen(port, function(port) {
-  console.log(`Example app listening on port ${port}!`);
-});
+app.listen(port);

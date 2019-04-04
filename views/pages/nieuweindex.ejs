@@ -13,41 +13,62 @@
   <nav>
     <a href="/form">Change settings</a>
   </nav>
-  <p>Best Available Room</p>
-  <h1><%= data[0].name%></h1>
-  <!--<p class="ranking twee"><%= data[0].ranking%></p>-->
-  <ul>
-    <li>Temp</li>
-    <li>Dec</li>
-    <li>Light</li>
 
+  <p>Best Available Room:</p>
+  <h1><%= data[0].name%>  </h1>
+
+  <p class="ranking twee"> match <%= data[0].ranking%>%</p>
+  <ul>
+    <li>Temp: <span><%= data[0].temperature%>&#8451;</span></li>
+    <li>Decibel:<span> <%= data[0].mic_level%> </span></li>
+    <li>Light:<span> <%= data[0].ambient_light%> </span></li>
   </ul>
 
+
 </div>
+
   <ol class='true' start="2">
+  <!--<p class= "date"><%= time%> </p>-->
   <% data.forEach(function(item){ %>
   <%if (item.measurements.occupancy === true) { %>
     <li>
     <ul>
-      <li><%= item.name%></li>
-      <li class="ranking"><%= item.ranking%></li>
+      <div>
+        <li><%= item.name%></li>
+      </div>
+      <div>
+      <li>Temp: <span><%= item.temperature%>&#8451;</span></li>
+      <li>Decibel: <span><%= item.mic_level%> </span></li>
+      <li>Light:<span> <%= item.ambient_light%> </span></li>
+        <li class="ranking">match <%= item.ranking%>%</li>
+      </div>
     </ul>
     </li>
   <% } %>
   <% }); %>
 </ol>
 
-<ol>
+<ol class='false' start="2">
 <% data.forEach(function(item){ %>
-<%if (item.measurements.occupancy === false) { %>
-  <ul class="<%= item.measurements.occupancy%>">
 
-    <li><%= item.name%></li>
-    <li><%= item.ranking-200%></li>
-    <li>niet beschikbaar</li>
-  </ul>
-<% } %>
-<% }); %>
+  <%if (item.measurements.occupancy === false) { %>
+    <li class= "false">
+    <ul>
+      <div>
+        <li><%= item.name%></li>
+          <li class="inuse">In use</li>
+      </div>
+      <div>
+      <li>Temp: <span><%= item.temperature%>&#8451;</span></li>
+      <li>Decibel: <span><%= item.mic_level%> </span></li>
+      <li>Light:<span> <%= item.ambient_light%> </span></li>
+        <li class="ranking">match <%= item.ranking%>%</li>
+
+      </div>
+    </ul>
+    </li>
+  <% } %>
+  <% }); %>
 </ol>
 
   <footer><% include ../partials/footer %></footer>
