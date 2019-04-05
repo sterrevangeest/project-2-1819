@@ -231,7 +231,7 @@ app.post("/postform", function(req, res) {
         ":" +
         currentdate.getSeconds();
       //console.log(sortRanking);
-      res.render("pages/nieuweindex", {
+      res.render("pages/index", {
         data: sortRanking,
         time: datetime
       });

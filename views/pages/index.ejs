@@ -9,59 +9,68 @@
 
 <body class="container">
 
-  <header> <% include ../partials/header %></header>
+<div class="bestroom">
+  <nav>
+    <a href="/form">Change settings</a>
+  </nav>
 
+  <p>Best Available Room:</p>
+  <h1><%= data[0].name%>  </h1>
+
+  <p class="ranking twee"> match <%= data[0].ranking%>%</p>
+  <ul>
+    <li>Temp: <span><%= data[0].temperature%>&#8451;</span></li>
+    <li>Decibel:<span> <%= data[0].mic_level%> </span></li>
+    <li>Light:<span> <%= data[0].ambient_light%> </span></li>
+  </ul>
+
+
+</div>
+
+  <ol class='true' start="2">
+  <p class= "date"><%= time%> </p>
   <% data.forEach(function(item){ %>
   <%if (item.measurements.occupancy === true) { %>
-  <article class="<%= item.measurements.occupancy%>">
-    <h2><%= item.roomName%></h2>
-    <p><%= item.measurements[filterId]%> <%= filterId%></p>
+    <li>
     <ul>
-      <li>Bap_level: <%= item.measurements.bapLevel%></li>
-      <li>Temperature: <%= item.measurements.temperature%></li>
-      <li>Mic_level: <%= item.measurements.mic_level%></li>
-      <li>Ambient_light: <%= item.measurements.ambient_light%></li>
-      <li>Humidity: <%= item.measurements.humidity%></li>
-      <li>C02: <%= item.measurements.co2%></li>
-      <li>VOC: <%= item.measurements.voc%></li>
+      <div>
+        <li><%= item.name%></li>
+      </div>
+      <div>
+      <li>Temp: <span><%= item.temperature%>&#8451;</span></li>
+      <li>Decibel: <span><%= item.mic_level%> </span></li>
+      <li>Light:<span> <%= item.ambient_light%> </span></li>
+        <li class="ranking">match <%= item.ranking%>%</li>
+      </div>
     </ul>
-    <button type="button" name="button">More info</button>
-  </article>
-  <% } %>
-  <% }); %>
-
-  <% data.forEach(function(item){ %>
-  <%if (item.measurements.occupancy === false) { %>
-  <article class="<%= item.measurements.occupancy%>">
-    <h2><%= item.roomName%></h2>
-    <p><%= item.measurements[filterId]%> <%= filterId%></p>
-
-    <button type="button" name="button">More info</button>
-  </article>
-  <% } %>
-  <% }); %>
-
-
-  <!-- <ul>
-<% data.forEach(function(item){ %>
-  <%if (item.measurements.occupancy === true) { %>
-    <li class= "<%= item.measurements.occupancy%>">
-      <a href="room/<%= item.url%>"><%= item.roomName%></a>
-      <%= item.measurements[filterId]%> <%= filterId%>
     </li>
-<% } %>
-<% }); %>
-</ul>
-<ul>
+  <% } %>
+  <% }); %>
+</ol>
 
+<ol class='false' start="2">
 <% data.forEach(function(item){ %>
+
   <%if (item.measurements.occupancy === false) { %>
-    <li class= "<%= item.measurements.occupancy%>">
-      <a href="room/<%= item.url%>">
-      <%= item.roomName%></a>  <%= item.measurements[filterId]%> <%= filterId%> </li>
-<% } %>
-<% }); %>
-</ul> -->
+    <li class= "false">
+    <ul>
+      <div>
+        <li><%= item.name%></li>
+          <li class="inuse">In use</li>
+      </div>
+      <div>
+      <li>Temp: <span><%= item.temperature%>&#8451;</span></li>
+      <li>Decibel: <span><%= item.mic_level%> </span></li>
+      <li>Light:<span> <%= item.ambient_light%> </span></li>
+        <li class="ranking">match <%= item.ranking%>%</li>
+
+      </div>
+    </ul>
+    </li>
+  <% } %>
+  <% }); %>
+</ol>
+
   <footer><% include ../partials/footer %></footer>
 
 </body>
