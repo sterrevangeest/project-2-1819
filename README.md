@@ -24,10 +24,6 @@ npm install
 npm run server
 ```
 
-## Performance
-
-## Progressive Enhancement
-
 ## To do:
 
 - [x] Application works without JavaScript (by making a server side app)
