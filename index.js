@@ -7,11 +7,11 @@ var port = process.env.PORT || 8000;
 var bodyParser = require("body-parser");
 var fetch = require("node-fetch");
 var ejs = require("ejs");
+
 require("dotenv").config();
 app.set("view engine", "ejs");
 
 app.use(bodyParser.json());
-
 app.use(
   bodyParser.urlencoded({
     extended: true
@@ -197,56 +197,47 @@ app.post("/postform", function(req, res) {
       var sumRankingValues = arr.map(function(item, i) {
         var ranking =
           item.temperatureRank + item.mic_levelRank + item.ambientlightRank;
-
-        var calculatePercentage = Math.round((ranking * 100) / 33);
+        var ranking2 = 100 - ranking;
+        console.log(ranking2);
+        var calculatePercentage = Math.round(ranking * 100);
         console.log(
           "Ranking",
           ranking,
           "calculatePercentage",
           calculatePercentage
         );
-        arr[i].ranking = calculatePercentage;
+        arr[i].ranking = ranking2;
 
         if (item.measurements.occupancy === false) {
-          arr[i].ranking = ranking;
+          arr[i].ranking = ranking2;
         }
         return arr;
       });
 
-      function timeConverter(UNIX_timestamp) {
-        var a = new Date(UNIX_timestamp * 1000);
-        var months = [
-          "Jan",
-          "Feb",
-          "Mar",
-          "Apr",
-          "May",
-          "Jun",
-          "Jul",
-          "Aug",
-          "Sep",
-          "Oct",
-          "Nov",
-          "Dec"
-        ];
-        var year = a.getFullYear();
-        var month = months[a.getMonth()];
-        var date = a.getDate();
-        var hour = a.getHours();
-        var min = a.getMinutes();
-        var sec = a.getSeconds();
-        var time =
-          date + " " + month + " " + year + " " + hour + ":" + min + ":" + sec;
-        return time;
-      }
-      console.log(timeConverter(1553781803.617139));
-
       var sortRanking = arr.sort((a, b) => (b.ranking > a.ranking ? 1 : -1));
 
+      var currentdate = new Date();
+      var datetime =
+        "Last Sync: " +
+        currentdate.getDate() +
+        "/" +
+        (currentdate.getMonth() + 1) +
+        "/" +
+        currentdate.getFullYear() +
+        " @ " +
+        currentdate.getHours() +
+        ":" +
+        currentdate.getMinutes() +
+        ":" +
+        currentdate.getSeconds();
+      //console.log(sortRanking);
       res.render("pages/nieuweindex", {
         data: sortRanking,
-        time: timeConverter(data[1].timestamp)
+        time: datetime
       });
+    })
+    .catch(function(error) {
+      console.log(error);
     });
 });
 

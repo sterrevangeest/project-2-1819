@@ -1,7 +1,4 @@
 @media (max-width: 600px) {
-  html {
-    //background: red;
-  }
   ol li ul div li {
     display: block;
   }
@@ -58,17 +55,11 @@
   }
 }
 
-html {
-  /* margin: 1em; */
-}
-
 body {
   font-family: Brando Sans, Verdana, sans-serif;
-  /* max-width: 40em;
-  margin: 0 auto; */
   color: #24282a;
   margin: 0;
-  //background-color: #56c271;
+  background-color: white;
 }
 
 .form {
@@ -103,14 +94,6 @@ body .bestroom {
   display: inline;
   list-style-type: none;
 }
-
-/* .bestroom nav {
-  text-align: right;
-  position: relative;
-  top: -50px;
-  right: -50px;
-  color: white;
-} */
 
 .bestroom a {
   color: white;
@@ -204,6 +187,20 @@ form option {
   display: inline-block;
 }
 
+form div option {
+  padding: 0 6.3em;
+}
+
+form div option:first-of-type {
+  padding: 0;
+  float: left;
+}
+
+form div option:last-of-type {
+  padding: 0;
+  float: right;
+}
+
 form div {
   display: flex;
   justify-content: space-between;
@@ -232,28 +229,24 @@ input[type="range"]::-webkit-slider-thumb {
   border-radius: 100%;
   background: #202020;
   cursor: pointer;
-  box-shadow: 3px solid black;
-  /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
-  -webkit-box-shadow: 0px 0px 0px 10px rgba(86, 194, 113, 0.6);
-
-  /* Add cool effects to your sliders! */
+  box-shadow: 0px 0px 0px 10px rgba(86, 194, 113, 0.8);
 }
 
 #temperature[type="range"] {
-  //background: linear-gradient(90deg, OrangeRed, gold, DeepSkyBlue);
-  background: #56c271;
+  background: linear-gradient(90deg, OrangeRed, gold, DeepSkyBlue);
+  //background: #56c271;
   //border: 1px solid black;
 }
 
 #mic_level[type="range"] {
-  //background: linear-gradient(90deg, OrangeRed, gold, GreenYellow);
-  background: #56c271;
+  background: linear-gradient(90deg, OrangeRed, gold, GreenYellow);
+  //background: #56c271;
   //border: 1px solid black;
 }
 
 #ambient_light[type="range"] {
-  //background: linear-gradient(90deg, #303030, Gainsboro);
-  background: #56c271;
+  background: linear-gradient(90deg, #303030, Gainsboro);
+  //background: #56c271;
   //border: 1px solid black;
 }
 
@@ -314,7 +307,7 @@ ol .false {
 }
 
 .inuse {
-  color: red;
+  color: OrangeRed;
   margin-right: 1em;
   float: right;
 }
